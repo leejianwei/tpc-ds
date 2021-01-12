@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS tpcds;
 USE tpcds;
 
-CREATE TABLE dbgen_version
+CREATE TABLE dbgen_version on cluster perftest_3shards_1replicas
 (
     dv_version                Nullable(String),
     dv_create_date            Nullable(Date),
@@ -9,7 +9,7 @@ CREATE TABLE dbgen_version
     dv_cmdline_args           Nullable(String)
 ) ENGINE = Log;
 
-CREATE TABLE customer_address
+CREATE TABLE customer_address on cluster perftest_3shards_1replicas
 (
     ca_address_sk             Int64,
     ca_address_id             String,
@@ -27,7 +27,7 @@ CREATE TABLE customer_address
 ) ENGINE = MergeTree() 
 ORDER BY (ca_address_sk);
 
-CREATE TABLE customer_demographics
+CREATE TABLE customer_demographics on cluster perftest_3shards_1replicas
 (
     cd_demo_sk                Int64,
     cd_gender                 Nullable(String),
@@ -41,7 +41,7 @@ CREATE TABLE customer_demographics
 ) ENGINE = MergeTree() 
 ORDER BY (cd_demo_sk);
 
-CREATE TABLE date_dim
+CREATE TABLE date_dim on cluster perftest_3shards_1replicas
 (
     d_date_sk                 Int64,
     d_date_id                 String,
@@ -74,7 +74,7 @@ CREATE TABLE date_dim
 ) ENGINE = MergeTree() 
 ORDER BY (d_date_sk);
 
-CREATE TABLE warehouse
+CREATE TABLE warehouse on cluster perftest_3shards_1replicas
 (
     w_warehouse_sk            Int64,
     w_warehouse_id            String,
@@ -93,7 +93,7 @@ CREATE TABLE warehouse
 ) ENGINE = MergeTree() 
 ORDER BY (w_warehouse_sk);
 
-CREATE TABLE ship_mode
+CREATE TABLE ship_mode on cluster perftest_3shards_1replicas
 (
     sm_ship_mode_sk           Int64,
     sm_ship_mode_id           String,
@@ -104,7 +104,7 @@ CREATE TABLE ship_mode
 ) ENGINE = MergeTree() 
 ORDER BY (sm_ship_mode_sk);
 
-CREATE TABLE time_dim
+CREATE TABLE time_dim on cluster perftest_3shards_1replicas
 (
     t_time_sk                 Int64,
     t_time_id                 String,
@@ -119,7 +119,7 @@ CREATE TABLE time_dim
 ) ENGINE = MergeTree() 
 ORDER BY (t_time_sk);
 
-CREATE TABLE reason
+CREATE TABLE reason on cluster perftest_3shards_1replicas
 (
     r_reason_sk               Int64,
     r_reason_id               String,
@@ -127,7 +127,7 @@ CREATE TABLE reason
 ) ENGINE = MergeTree() 
 ORDER BY (r_reason_sk);
 
-CREATE TABLE income_band
+CREATE TABLE income_band on cluster perftest_3shards_1replicas
 (
     ib_income_band_sk         Int64,
     ib_lower_bound            Nullable(Int64),
@@ -135,7 +135,7 @@ CREATE TABLE income_band
 ) ENGINE = MergeTree() 
 ORDER BY (ib_income_band_sk);
 
-CREATE TABLE item
+CREATE TABLE item on cluster perftest_3shards_1replicas
 (
     i_item_sk                 Int64,
     i_item_id                 String,
@@ -162,7 +162,7 @@ CREATE TABLE item
 ) ENGINE = MergeTree() 
 ORDER BY (i_item_sk);
 
-CREATE TABLE store
+CREATE TABLE store on cluster perftest_3shards_1replicas
 (
     s_store_sk                Int64,
     s_store_id                String,
@@ -196,7 +196,7 @@ CREATE TABLE store
 ) ENGINE = MergeTree() 
 ORDER BY (s_store_sk);
 
-CREATE TABLE call_center
+CREATE TABLE call_center on cluster perftest_3shards_1replicas
 (
     cc_call_center_sk         Int64,
     cc_call_center_id         String,
@@ -232,7 +232,7 @@ CREATE TABLE call_center
 ) ENGINE = MergeTree() 
 ORDER BY (cc_call_center_sk);
 
-CREATE TABLE customer
+CREATE TABLE customer on cluster perftest_3shards_1replicas
 (
     c_customer_sk             Int64,
     c_customer_id             String,
@@ -255,7 +255,7 @@ CREATE TABLE customer
 ) ENGINE = MergeTree() 
 ORDER BY (c_customer_sk);
 
-CREATE TABLE web_site
+CREATE TABLE web_site on cluster perftest_3shards_1replicas
 (
     web_site_sk               Int64,
     web_site_id               String,
@@ -286,7 +286,7 @@ CREATE TABLE web_site
 ) ENGINE = MergeTree() 
 ORDER BY (web_site_sk);
 
-CREATE TABLE store_returns
+CREATE TABLE store_returns on cluster perftest_3shards_1replicas
 (
     sr_returned_date_sk       Nullable(Int64),
     sr_return_time_sk         Nullable(Int64),
@@ -311,7 +311,7 @@ CREATE TABLE store_returns
 ) ENGINE = MergeTree() 
 ORDER BY (sr_item_sk, sr_ticket_number);
 
-CREATE TABLE household_demographics
+CREATE TABLE household_demographics on cluster perftest_3shards_1replicas
 (
     hd_demo_sk                Int64,
     hd_income_band_sk         Nullable(Int64),
@@ -321,7 +321,7 @@ CREATE TABLE household_demographics
 ) ENGINE = MergeTree() 
 ORDER BY (hd_demo_sk);
 
-CREATE TABLE web_page
+CREATE TABLE web_page on cluster perftest_3shards_1replicas
 (
     wp_web_page_sk            Int64,
     wp_web_page_id            String,
@@ -340,7 +340,7 @@ CREATE TABLE web_page
 ) ENGINE = MergeTree() 
 ORDER BY (wp_web_page_sk);
 
-CREATE TABLE promotion
+CREATE TABLE promotion on cluster perftest_3shards_1replicas
 (
     p_promo_sk                Int64,
     p_promo_id                String,
@@ -364,7 +364,7 @@ CREATE TABLE promotion
 ) ENGINE = MergeTree() 
 ORDER BY (p_promo_sk);
 
-CREATE TABLE catalog_page
+CREATE TABLE catalog_page on cluster perftest_3shards_1replicas
 (
     cp_catalog_page_sk        Int64,
     cp_catalog_page_id        String,
@@ -378,7 +378,7 @@ CREATE TABLE catalog_page
 ) ENGINE = MergeTree() 
 ORDER BY (cp_catalog_page_sk);
 
-CREATE TABLE inventory
+CREATE TABLE inventory on cluster perftest_3shards_1replicas
 (
     inv_date_sk               Int64,
     inv_item_sk               Int64,
@@ -387,7 +387,7 @@ CREATE TABLE inventory
 ) ENGINE = MergeTree() 
 ORDER BY (inv_date_sk, inv_item_sk, inv_warehouse_sk);
 
-CREATE TABLE catalog_returns
+CREATE TABLE catalog_returns on cluster perftest_3shards_1replicas
 (
     cr_returned_date_sk       Nullable(Int64),
     cr_returned_time_sk       Nullable(Int64),
@@ -419,7 +419,7 @@ CREATE TABLE catalog_returns
 ) ENGINE = MergeTree()
 ORDER BY (cr_item_sk, cr_order_number);
 
-CREATE TABLE web_returns
+CREATE TABLE web_returns on cluster perftest_3shards_1replicas
 (
     wr_returned_date_sk       Nullable(Int64),
     wr_returned_time_sk       Nullable(Int64),
@@ -448,7 +448,7 @@ CREATE TABLE web_returns
 ) ENGINE = MergeTree() 
 ORDER BY (wr_item_sk, wr_order_number);
 
-CREATE TABLE web_sales
+CREATE TABLE web_sales on cluster perftest_3shards_1replicas
 (
     ws_sold_date_sk           Nullable(Int64),
     ws_sold_time_sk           Nullable(Int64),
@@ -487,7 +487,7 @@ CREATE TABLE web_sales
 ) ENGINE = MergeTree()
 ORDER BY (ws_item_sk, ws_order_number);
 
-CREATE TABLE catalog_sales
+CREATE TABLE catalog_sales on cluster perftest_3shards_1replicas
 (
     cs_sold_date_sk           Nullable(Int64),
     cs_sold_time_sk           Nullable(Int64),
@@ -526,7 +526,7 @@ CREATE TABLE catalog_sales
 ) ENGINE = MergeTree() 
 ORDER BY (cs_item_sk, cs_order_number);
 
-CREATE TABLE store_sales
+CREATE TABLE store_sales on cluster perftest_3shards_1replicas
 (
     ss_sold_date_sk           Nullable(Int64),
     ss_sold_time_sk           Nullable(Int64),
@@ -553,4 +553,5 @@ CREATE TABLE store_sales
     ss_net_profit             Nullable(Float32)
 ) ENGINE = MergeTree() 
 ORDER BY (ss_item_sk, ss_ticket_number);
+
 
